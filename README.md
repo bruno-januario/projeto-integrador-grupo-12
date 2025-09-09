@@ -64,7 +64,8 @@ Os protótipos de interface foram desenvolvidos no **Figma**, simulando todas as
 - Telas de Cadastro (7 perfis)  
 - Telas de Consulta, Edição e Exclusão de Registros  
 
-📎 Link para os protótipos no Figma: [SISTEMA UNIFICA – Projeto Completo de Prototipagem](https://www.figma.com/design/VTrktblFNdXOmUN1GWfsE8/SISTEMA-UNIFICA?node-id=0-1&p=f&t=DwvsWAIkEE89UmYn-0)   
+📎 Link para os protótipos no Figma: [SISTEMA UNIFICA – Projeto Completo de Prototipagem](https://www.figma.com/design/VTrktblFNdXOmUN1GWfsE8/SISTEMA-UNIFICA?node-id=0-1&p=f&t=DwvsWAIkEE89UmYn-0)  
+
 📎 Screenshots das telas disponíveis na pasta [`prototipos/`](./prototipos/)  
 
 ---
