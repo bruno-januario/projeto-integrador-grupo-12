@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar CPF</title>
+  <link rel="stylesheet" href="../css/style-editar.css">
+  <link rel="icon" href="../img/icone-cabecalho.png" type="image/png">
+</head>
+<body>
+  <div class="container">
+
+    <header id="cabecalho">
+      <button id="btn-voltar" onclick="window.history.back();">
+        <img src="../img/icone-voltar.png">VOLTAR
+      </button>
+      <h1 id="titulo-cabecalho">SISTEMA UNIFICA</h1>
+      <img id="icone-cabecalho" src="../img/icone-cabecalho.png" alt="Ícone">
+      <button id="btn-sair">
+        <span>SAIR</span>
+        <img src="../img/icone-sair.png" alt="Sair">
+      </button>
+    </header>
+
+    <h2 id="titulo-cadastro">EDITAR PESSOA FÍSICA</h2>
+
+    <main>
+      <form id="form-editar-pf" class="form-cadastro">
+        <label>Nome completo*:
+          <input type="text" name="nome" required>
+        </label>
+
+        <label>CPF*:
+          <input type="text" name="cpf" required maxlength="14" placeholder="000.000.000-00">
+        </label>
+
+        <label>Data de nascimento*:
+          <input type="date" name="dataNascimento" required>
+        </label>
+
+        <label>E-mail:
+          <input type="email" name="email">
+        </label>
+
+        <label>Telefone:
+          <input type="tel" name="telefone" placeholder="(00) 00000-0000">
+        </label>
+
+        <label>Endereço:
+          <input type="text" name="endereco">
+        </label>
+
+        <div id="mensagem"></div>
+        <button type="submit">Salvar Alterações</button>
+      </form>
+
+    </main>
+
+    <footer id="rodape">
+      <p>© 2025 SISTEMA UNIFICA — Todos os direitos reservados.</p>
+    </footer>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const idPessoa = urlParams.get('id');
+
+    const form = document.getElementById("form-editar-pf");
+    const mensagem = document.getElementById("mensagem");
+
+    // Simulação de dados
+    const pessoas = [
+      { id: "1", nome: "Fernanda Lima", cpf: "111.222.333-44", dataNascimento: "1990-07-10", email: "fernanda@email.com", telefone: "(11) 91234-5678", endereco: "Rua Central, 100" },
+      { id: "2", nome: "Ricardo Mendes", cpf: "555.666.777-88", dataNascimento: "1985-03-25", email: "ricardo@email.com", telefone: "(21) 99876-5432", endereco: "Av. Paulista, 2000" }
+    ];
+
+    // Preencher formulário
+    const pessoa = pessoas.find(p => p.id === idPessoa);
+
+    if (pessoa) {
+      form.nome.value = pessoa.nome;
+      form.cpf.value = pessoa.cpf;
+      form.dataNascimento.value = pessoa.dataNascimento;
+      form.email.value = pessoa.email;
+      form.telefone.value = pessoa.telefone;
+      form.endereco.value = pessoa.endereco;
+    }
+
+    // Validação e submissão
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const cpf = form.cpf.value.trim();
+      if (!/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/.test(cpf)) {
+        mensagem.innerHTML = "<p style='color:red;'>CPF inválido.</p>";
+        return;
+      }
+
+      mensagem.innerHTML = "<p style='color:green;'>Pessoa Física atualizada com sucesso!</p>";
+
+    });
+  </script>
+
+  <script>
+    const btnSair = document.getElementById('btn-sair');
+
+    btnSair.addEventListener('click', () => {
+        window.location.href = '../index.html';
+    });
+  </script>
+</body>
+</html>

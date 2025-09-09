@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Aluno</title>
+  <link rel="stylesheet" href="../css/style-editar.css">
+  <link rel="icon" href="../img/icone-cabecalho.png" type="image/png">
+</head>
+<body>
+  <div class="container">
+
+    <header id="cabecalho">
+      <button id="btn-voltar" onclick="window.history.back();">
+        <img src="../img/icone-voltar.png">VOLTAR
+      </button>
+      <h1 id="titulo-cabecalho">SISTEMA UNIFICA</h1>
+      <img id="icone-cabecalho" src="../img/icone-cabecalho.png" alt="Ícone">
+      <button id="btn-sair">
+        <span>SAIR</span>
+        <img src="../img/icone-sair.png" alt="Sair">
+      </button>
+    </header>
+
+    <h2 id="titulo-cadastro">EDITAR ALUNO</h2>
+
+    <main>
+      <form id="form-editar-aluno" class="form-cadastro">
+        <label>Nome completo*:
+          <input type="text" name="nome" required>
+        </label>
+
+        <label>CPF*:
+          <input type="text" name="cpf" required maxlength="14" placeholder="000.000.000-00">
+        </label>
+
+        <label>Data de nascimento*:
+          <input type="date" name="dataNascimento" required>
+        </label>
+
+        <label>E-mail:
+          <input type="email" name="email">
+        </label>
+
+        <label>Telefone:
+          <input type="tel" name="telefone" placeholder="(00) 00000-0000">
+        </label>
+
+        <label>Endereço:
+          <input type="text" name="endereco">
+        </label>
+
+        <label>Matrícula*:
+          <input type="text" name="matricula" required>
+        </label>
+
+        <label>Curso*:
+          <input type="text" name="curso" required>
+        </label>
+
+        <label>Nível*:
+          <select name="nivel" required>
+            <option value="">Selecione</option>
+            <option>Graduação</option>
+            <option>Técnico</option>
+            <option>Pós-graduação</option>
+          </select>
+        </label>
+
+        <div id="responsavel" style="display:none; margin-top:15px;">
+          <h3>Dados do Responsável</h3>
+          <label>Nome do responsável*:
+            <input type="text" name="responsavelNome">
+          </label>
+          <label>Parentesco*:
+            <input type="text" name="responsavelParentesco">
+          </label>
+        </div>
+
+        <div id="mensagem"></div>
+        <button type="submit">Salvar Alterações</button>
+      </form>
+    </main>
+
+    <footer id="rodape">
+      <p>© 2025 SISTEMA UNIFICA — Todos os direitos reservados.</p>
+    </footer>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const idAluno = urlParams.get('id');
+
+    const form = document.getElementById("form-editar-aluno");
+    const dataNascimento = form.dataNascimento;
+    const responsavelDiv = document.getElementById("responsavel");
+    const mensagem = document.getElementById("mensagem");
+
+    // Simulação de dados
+    const alunos = [
+      { id: "1", nome: "João Silva", cpf: "123.456.789-00", dataNascimento: "2008-05-12", email: "joao@email.com", telefone: "(11) 98765-4321", endereco: "Rua A, 123", matricula: "2025001", curso: "Engenharia", nivel: "Graduação", responsavelNome: "Carlos Silva", responsavelParentesco: "Pai" },
+      { id: "2", nome: "Maria Santos", cpf: "987.654.321-00", dataNascimento: "2005-09-20", email: "maria@email.com", telefone: "(21) 91234-5678", endereco: "Av. B, 456", matricula: "2025002", curso: "Administração", nivel: "Graduação", responsavelNome: "", responsavelParentesco: "" }
+    ];
+
+    // Preencher formulário com dados do aluno
+    const aluno = alunos.find(a => a.id === idAluno);
+
+    if(aluno){
+      form.nome.value = aluno.nome;
+      form.cpf.value = aluno.cpf;
+      form.dataNascimento.value = aluno.dataNascimento;
+      form.email.value = aluno.email;
+      form.telefone.value = aluno.telefone;
+      form.endereco.value = aluno.endereco;
+      form.matricula.value = aluno.matricula;
+      form.curso.value = aluno.curso;
+      form.nivel.value = aluno.nivel;
+
+      if(aluno.responsavelNome){
+        responsavelDiv.style.display = "block";
+        form.responsavelNome.value = aluno.responsavelNome;
+        form.responsavelParentesco.value = aluno.responsavelParentesco;
+        form.responsavelNome.required = true;
+        form.responsavelParentesco.required = true;
+      }
+    }
+
+    // Mostrar responsável se menor de idade
+    dataNascimento.addEventListener("change", () => {
+      const data = new Date(dataNascimento.value);
+      const hoje = new Date();
+      let idade = hoje.getFullYear() - data.getFullYear();
+      const mes = hoje.getMonth() - data.getMonth();
+      if(mes < 0 || (mes === 0 && hoje.getDate() < data.getDate())){
+        idade--;
+      }
+      if(idade < 18){
+        responsavelDiv.style.display = "block";
+        responsavelDiv.querySelectorAll("input").forEach(i => i.required = true);
+      } else {
+        responsavelDiv.style.display = "none";
+        responsavelDiv.querySelectorAll("input").forEach(i => i.required = false);
+      }
+    });
+
+    // Validação e submissão
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const cpf = form.cpf.value.trim();
+      if(!/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/.test(cpf)){
+        mensagem.innerHTML = "<p style='color:red;'>CPF inválido.</p>";
+        return;
+      }
+
+      mensagem.innerHTML = "<p style='color:green;'>Aluno atualizado com sucesso!</p>";
+    });
+  </script>
+
+  <script>
+    const btnSair = document.getElementById('btn-sair');
+
+    btnSair.addEventListener('click', () => {
+        window.location.href = '../index.html';
+    });
+  </script>
+</body>
+</html>

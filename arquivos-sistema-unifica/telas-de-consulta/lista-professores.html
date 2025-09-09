@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Professores</title>
+  <link rel="stylesheet" href="../css/style-lista-consulta.css">
+  <link rel="icon" href="../img/icone-cabecalho.png" type="image/png">
+</head>
+<body>
+  <div class="container">
+
+    <header id="cabecalho">
+      <button id="btn-voltar" onclick="window.history.back();">
+        <img src="../img/icone-voltar.png">VOLTAR
+      </button>
+      <h1 id="titulo-cabecalho">SISTEMA UNIFICA</h1>
+      <img id="icone-cabecalho" src="../img/icone-cabecalho.png">
+      <button id="btn-sair">
+        <span>SAIR</span>
+        <img src="../img/icone-sair.png" alt="Sair">
+      </button>
+    </header>
+
+    <h2 id="titulo-lista">PROFESSORES CADASTRADOS</h2>
+
+    <main>
+      <div class="lista-registros">
+        <!-- Card de professor -->
+        <div class="registro">
+          <p><strong>Nome:</strong> Ana Oliveira</p>
+          <p><strong>CPF:</strong> 123.456.789-01</p>
+          <p><strong>Disciplina:</strong> Matemática</p>
+        </div>
+
+        <div class="registro">
+          <p><strong>Nome:</strong> Carlos Pereira</p>
+          <p><strong>CPF:</strong> 987.654.321-01</p>
+          <p><strong>Disciplina:</strong> Física</p>
+        </div>
+
+      </div>
+    </main>
+
+    <footer id="rodape">
+      <p>© 2025 SISTEMA UNIFICA — Todos os direitos reservados.</p>
+    </footer>
+  </div>
+
+  <script>
+    const btnSair = document.getElementById('btn-sair');
+
+    btnSair.addEventListener('click', () => {
+        window.location.href = '../index.html';
+    });
+  </script>
+</body>
+</html>

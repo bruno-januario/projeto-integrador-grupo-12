@@ -1,0 +1,49 @@
+========================================
+           SISTEMA UNIFICA
+========================================
+
+Este projeto é uma simulação acadêmica do
+Sistema Unifica, desenvolvido como parte
+de um trabalho de faculdade. 
+
+----------------------------------------
+🔹 COMO INICIAR
+----------------------------------------
+- Abra o arquivo "index.html" no navegador.
+- Não é necessário instalar banco de dados
+  nem servidor local: as páginas funcionam
+  de forma estática.
+- Não é necessário inserir usuário e senha:
+  o sistema já preenche automaticamente
+  credenciais fictícias para cada perfil.
+
+----------------------------------------
+🔹 PERFIS DISPONÍVEIS
+----------------------------------------
+- Secretário: acesso ao menu de consultas.
+- Administrador: acesso a cadastros e 
+  gerenciamento de registros.
+
+----------------------------------------
+🔹 FUNCIONAMENTO
+----------------------------------------
+- Todos os dados são ESTÁTICOS.
+- Não há persistência de informações em 
+  banco de dados.
+- As telas simulam navegação real entre 
+  login, home, cadastros, consultas, edição
+  e exclusão de registros fictícios.
+
+----------------------------------------
+🔹 OBSERVAÇÕES
+----------------------------------------
+- O sistema é apenas um protótipo de 
+  interface, feito para fins didáticos.
+- Nenhuma informação inserida é salva.
+- Recomendamos usar navegadores modernos
+  (Google Chrome, Edge ou Firefox) para 
+  melhor experiência.
+
+----------------------------------------
+© 2025 Sistema Unifica — Todos os direitos
+reservados.

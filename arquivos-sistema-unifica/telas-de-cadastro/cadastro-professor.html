@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Professor</title>
+  <link rel="stylesheet" href="../css/style-cadastro.css">
+  <link rel="icon" href="../img/icone-cabecalho.png" type="image/png">
+</head>
+<body>
+  <div class="container">
+
+    <header id="cabecalho">
+      <button id="btn-voltar" onclick="window.history.back();">
+        <img src="../img/icone-voltar.png">VOLTAR
+      </button>
+      <h1 id="titulo-cabecalho">SISTEMA UNIFICA</h1>
+      <img id="icone-cabecalho" src="../img/icone-cabecalho.png" alt="Ícone">
+      <button id="btn-sair">
+        <span>SAIR</span>
+        <img src="../img/icone-sair.png" alt="Sair">
+      </button>
+    </header>
+
+    <h2 id="titulo-cadastro">CADASTRO DE PROFESSOR</h2>
+
+    <main>
+      <form id="form-professor" class="form-cadastro">
+        <label>Nome completo*:
+          <input type="text" name="nome" required>
+        </label>
+
+        <label>CPF*:
+          <input type="text" name="cpf" required maxlength="14" placeholder="000.000.000-00">
+        </label>
+
+        <label>E-mail:
+          <input type="email" name="email">
+        </label>
+
+        <label>Telefone:
+          <input type="tel" name="telefone" placeholder="(00) 00000-0000">
+        </label>
+
+        <label>Disciplina*:
+          <input type="text" name="disciplina" required>
+        </label>
+
+        <button type="submit">Salvar</button>
+      </form>
+
+      <div id="mensagem"></div>
+    </main>
+
+    <footer id="rodape">
+      <p>© 2025 SISTEMA UNIFICA — Todos os direitos reservados.</p>
+    </footer>
+  </div>
+
+  <script>
+    const form = document.getElementById("form-professor");
+    const mensagem = document.getElementById("mensagem");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const cpf = form.cpf.value.trim();
+      const disciplina = form.disciplina.value.trim();
+
+      if (!/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/.test(cpf)) {
+        mensagem.innerHTML = "<p style='color:red;'>CPF inválido.</p>";
+        return;
+      }
+
+      if (cpf === "000.000.000-00") {
+        mensagem.innerHTML = "<p style='color:red;'>CPF já cadastrado no sistema.</p>";
+        return;
+      }
+
+      if (!disciplina) {
+        mensagem.innerHTML = "<p style='color:red;'>Campo disciplina é obrigatório.</p>";
+        return;
+      }
+
+      mensagem.innerHTML = "<p style='color:green;'>Professor cadastrado com sucesso!</p>";
+      form.reset();
+    });
+  </script>
+
+  <script>
+    const btnSair = document.getElementById('btn-sair');
+
+    btnSair.addEventListener('click', () => {
+        window.location.href = '../index.html';
+    });
+  </script>
+</body>
+</html>

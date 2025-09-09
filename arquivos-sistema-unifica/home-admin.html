@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Administrador</title>
+    <link href="css/style-home-admin.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="img/icone-cabecalho.png" type="image/png">
+</head>
+<body>
+    <div class="container">
+        <header id="cabecalho">
+            <h1 id="titulo-cabecalho">SISTEMA UNIFICA</h1>
+            <img id="icone-cabecalho" src="img/icone-cabecalho.png" alt="Ícone do sistema">
+
+            <button id="btn-sair" class="btn-sair">
+                SAIR
+                <img src="img/icone-sair.png" alt="Sair">
+            </button>
+        </header>
+
+
+        <div class="conteudo">
+            <nav class="menu-lateral" aria-label="Menu lateral de cadastro">
+                <h2 id="titulo-menu-lateral">CADASTRAR</h2>
+
+                <div class="menu-setor">
+                    <h3>Acadêmico</h3>
+                    <a class="ancora" href="telas-de-cadastro/cadastro-aluno.html">
+                        <img class="icone-menu-lateral" src="img/icone-aluno-menu-lateral.png" alt="">
+                        Alunos
+                    </a>
+                    <a class="ancora" href="telas-de-cadastro/cadastro-professor.html">
+                        <img class="icone-menu-lateral" src="img/icone-professor-menu-lateral.png" alt="">
+                        Professores
+                    </a>
+                </div>
+
+                <div class="menu-setor">
+                    <h3>Administrativo</h3>
+                    <a class="ancora" href="telas-de-cadastro/cadastro-admin.html">
+                        <img class="icone-menu-lateral" src="img/icone-administrador-menu-lateral.png" alt="">
+                        Administradores
+                    </a>
+                    <a class="ancora" href="telas-de-cadastro/cadastro-secretario.html">
+                        <img class="icone-menu-lateral" src="img/icone-secretario-menu-lateral.png" alt="">
+                        Secretários
+                    </a>
+                </div>
+
+                <div class="menu-setor">
+                    <h3>Fornecedores</h3>
+                    <a class="ancora" href="telas-de-cadastro/cadastro-fornecedor.html">
+                        <img class="icone-menu-lateral" src="img/icone-fornecedor-menu-lateral.png" alt="">
+                        Fornecedores
+                    </a>
+                </div>
+
+                <div class="menu-setor">
+                    <h3>Pessoas</h3>
+                    <a class="ancora" href="telas-de-cadastro/cadastro-pj.html">
+                        <img class="icone-menu-lateral" src="img/icone-pessoa-juridica-menu-lateral.png" alt="">
+                        Pessoa Jurídica
+                    </a>
+                    <a class="ancora" href="telas-de-cadastro/cadastro-cpf.html">
+                        <img class="icone-menu-lateral" src="img/icone-pessoa-fisica-menu-lateral.png" alt="">
+                        Pessoa Física
+                    </a>
+                </div>
+            </nav>
+
+            <main class="area-cadastros" aria-label="Área de cadastros">
+                <h2 id="titulo-cadastros">GERENCIAR CADASTROS</h2>
+                <div class="container-grid">
+                    <a href="telas-de-consulta-e-edicao/lista-alunos.html" class="card-cadastro">
+                        <div class="tipo-cadastro">
+                            <img class="icone-card-cadastro" src="img/icone-aluno-cadastros.png" alt="">
+                            Alunos
+                        </div>
+                        <div class="numero-cadastros">2 cadastros</div>
+                    </a>
+
+                    <a href="telas-de-consulta-e-edicao/lista-cpf.html" class="card-cadastro">
+                        <div class="tipo-cadastro">
+                            <img class="icone-card-cadastro" src="img/icone-pessoa-fisica-cadastros.png" alt="">
+                            Pessoa Física
+                        </div>
+                        <div class="numero-cadastros">2 cadastros</div>
+                    </a>
+
+                    <a href="telas-de-consulta-e-edicao/lista-professores.html" class="card-cadastro">
+                        <div class="tipo-cadastro">
+                            <img class="icone-card-cadastro" src="img/icone-professor-cadastros.png" alt="">
+                            Professores
+                        </div>
+                        <div class="numero-cadastros">2 cadastros</div>
+                    </a>
+
+                    <a href="telas-de-consulta-e-edicao/lista-pj.html" class="card-cadastro">
+                        <div class="tipo-cadastro">
+                            <img class="icone-card-cadastro" src="img/icone-pessoa-juridica-cadastros.png" alt="">
+                            Pessoa Jurídica
+                        </div>
+                        <div class="numero-cadastros">2 cadastros</div>
+                    </a>
+
+                    <a href="telas-de-consulta-e-edicao/lista-secretarios.html" class="card-cadastro">
+                        <div class="tipo-cadastro">
+                            <img class="icone-card-cadastro" src="img/icone-secretario-cadastros.png" alt="">
+                            Secretários
+                        </div>
+                        <div class="numero-cadastros">2 cadastros</div>
+                    </a>
+
+                    <a href="telas-de-consulta-e-edicao/lista-fornecedores.html" class="card-cadastro">
+                        <div class="tipo-cadastro">
+                            <img class="icone-card-cadastro" src="img/icone-fornecedor-cadastros.png" alt="">
+                            Fornecedores
+                        </div>
+                        <div class="numero-cadastros">2 cadastros</div>
+                    </a>
+
+                    <a href="telas-de-consulta-e-edicao/lista-administradores.html" class="card-cadastro">
+                        <div class="tipo-cadastro">
+                            <img class="icone-card-cadastro" src="img/icone-administrador-cadastros.png" alt="">
+                            Administradores
+                        </div>
+                        <div class="numero-cadastros">2 cadastros</div>
+                    </a>
+                </div>
+            </main>
+        </div>
+
+        <footer id="rodape">
+            <p>© 2025 SISTEMA UNIFICA — Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <script>
+
+    const btnSair = document.getElementById('btn-sair');
+
+    btnSair.addEventListener('click', () => {
+        window.location.href = 'index.html';
+    });
+</script>
+
+</body>
+</html>

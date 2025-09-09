@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Fornecedor</title>
+  <link rel="stylesheet" href="../css/style-cadastro.css">
+  <link rel="icon" href="../img/icone-cabecalho.png" type="image/png">
+</head>
+<body>
+  <div class="container">
+
+    <header id="cabecalho">
+      <button id="btn-voltar" onclick="window.history.back();">
+        <img src="../img/icone-voltar.png">VOLTAR
+      </button>
+      <h1 id="titulo-cabecalho">SISTEMA UNIFICA</h1>
+      <img id="icone-cabecalho" src="../img/icone-cabecalho.png" alt="Ícone">
+      <button id="btn-sair">
+        <span>SAIR</span>
+        <img src="../img/icone-sair.png" alt="Sair">
+      </button>
+    </header>
+
+    <h2 id="titulo-cadastro">CADASTRO DE FORNECEDOR</h2>
+
+    <main>
+      <form id="form-fornecedor" class="form-cadastro">
+        <label>CNPJ*:
+          <input type="text" name="cnpj" required maxlength="18" placeholder="00.000.000/0000-00">
+        </label>
+
+        <label>Razão Social*:
+          <input type="text" name="razaoSocial" required>
+        </label>
+
+        <label>Endereço*:
+          <input type="text" name="endereco" required>
+        </label>
+
+        <label>Telefone:
+          <input type="tel" name="telefone" placeholder="(00) 00000-0000">
+        </label>
+
+        <label>E-mail:
+          <input type="email" name="email">
+        </label>
+
+        <button type="submit">Salvar</button>
+      </form>
+
+      <div id="mensagem"></div>
+    </main>
+
+    <footer id="rodape">
+      <p>© 2025 SISTEMA UNIFICA — Todos os direitos reservados.</p>
+    </footer>
+  </div>
+
+  <script>
+    const form = document.getElementById("form-fornecedor");
+    const mensagem = document.getElementById("mensagem");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const cnpj = form.cnpj.value.trim();
+      const razaoSocial = form.razaoSocial.value.trim();
+      const endereco = form.endereco.value.trim();
+
+      if (!cnpj || !razaoSocial || !endereco) {
+        mensagem.innerHTML = "<p style='color:red;'>Preencha todos os campos obrigatórios.</p>";
+        return;
+      }
+
+      // Validação simples de CNPJ (formato)
+      if (!/^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/.test(cnpj)) {
+        mensagem.innerHTML = "<p style='color:red;'>CNPJ inválido.</p>";
+        return;
+      }
+
+      // Simulação de duplicidade
+      if (razaoSocial.toLowerCase() === "fornecedor teste") {
+        mensagem.innerHTML = "<p style='color:red;'>Razão social já registrada no sistema.</p>";
+        return;
+      }
+
+      mensagem.innerHTML = "<p style='color:green;'>Fornecedor cadastrado com sucesso!</p>";
+      form.reset();
+    });
+  </script>
+
+  <script>
+    const btnSair = document.getElementById('btn-sair');
+
+    btnSair.addEventListener('click', () => {
+        window.location.href = '../index.html';
+    });
+  </script>
+</body>
+</html>

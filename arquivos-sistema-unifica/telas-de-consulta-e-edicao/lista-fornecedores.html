@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciar Fornecedores</title>
+  <link rel="stylesheet" href="../css/style-lista-admin.css">
+  <link rel="icon" href="../img/icone-cabecalho.png" type="image/png">
+</head>
+<body>
+  <div class="container">
+
+    <header id="cabecalho">
+      <button id="btn-voltar" onclick="window.history.back();">
+        <img src="../img/icone-voltar.png">VOLTAR
+      </button>
+      <h1 id="titulo-cabecalho">SISTEMA UNIFICA</h1>
+      <img id="icone-cabecalho" src="../img/icone-cabecalho.png" alt="Ícone">
+      <button id="btn-sair">
+        <span>SAIR</span>
+        <img src="../img/icone-sair.png" alt="Sair">
+      </button>
+    </header>
+
+    <h2 id="titulo-lista">FORNECEDORES CADASTRADOS</h2>
+
+    <main>
+      <div class="lista-registros">
+
+        <div class="registro">
+          <p><strong>Razão Social:</strong> Alfa Suprimentos LTDA</p>
+          <p><strong>CNPJ:</strong> 12.345.678/0001-99</p>
+          <p><strong>Telefone:</strong> (11) 3333-4444</p>
+          <div class="botoes-acoes">
+            <a href="editar-fornecedor.html?id=1" class="editar">Editar</a>
+            <button class="deletar" onclick="deletarFornecedor(1)">Deletar</button>
+          </div>
+        </div>
+
+        <div class="registro">
+          <p><strong>Razão Social:</strong> Beta Alimentos S/A</p>
+          <p><strong>CNPJ:</strong> 98.765.432/0001-11</p>
+          <p><strong>Telefone:</strong> (21) 9999-8888</p>
+          <div class="botoes-acoes">
+            <a href="editar-fornecedor.html?id=2" class="editar">Editar</a>
+            <button class="deletar" onclick="deletarFornecedor(2)">Deletar</button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <footer id="rodape">
+      <p>© 2025 SISTEMA UNIFICA — Todos os direitos reservados.</p>
+    </footer>
+  </div>
+
+  <script>
+    function deletarFornecedor(id) {
+      if (confirm("Tem certeza que deseja deletar este fornecedor?")) {
+        // aqui viria o backend para deletar
+        alert("Fornecedor com ID " + id + " deletado (simulação)");
+      }
+    }
+  </script>
+
+  <script>
+    const btnSair = document.getElementById('btn-sair');
+
+    btnSair.addEventListener('click', () => {
+        window.location.href = '../index.html';
+    });
+  </script>
+</body>
+</html>

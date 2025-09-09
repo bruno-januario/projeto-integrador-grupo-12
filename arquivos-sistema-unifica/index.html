@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIFICA - Login</title>
+    <link href="css/style-index.css" rel="stylesheet">
+    <link rel="icon" href="img/icone-cabecalho.png" type="image/png">
+</head>
+<body>
+    <div class="container">
+        <header id="cabecalho">
+            <h1 id="titulo-cabecalho">SISTEMA UNIFICA</h1>
+            <img id="icone-cabecalho" src="img/icone-cabecalho.png">
+        </header>
+
+        <main class="login-container">
+            <div class="login-card">
+                <div class="login-options">
+                    <button class="login-btn active" data-user="secretario">Secretário</button>
+                    <button class="login-btn" data-user="administrador">Administrador</button>
+                </div>
+                <div class="login-form-container">
+                    <form id="login-secretario" class="login-form active">
+                        <h2>Login Secretário</h2>
+                        <input type="text" placeholder="Usuário">
+                        <input type="password" placeholder="Senha">
+                        <button type="submit" class="btn-entrar">Entrar</button>
+                    </form>
+
+                    <form id="login-administrador" class="login-form">
+                        <h2>Login Administrador</h2>
+                        <input type="text" placeholder="Usuário">
+                        <input type="password" placeholder="Senha">
+                        <button type="submit" class="btn-entrar">Entrar</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <footer id="rodape">
+            <p>© 2025 SISTEMA UNIFICA — Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll('.login-btn');
+        const forms = document.querySelectorAll('.login-form');
+        const entrarBtns = document.querySelectorAll('.btn-entrar');
+
+        // Função para preencher login e senha fictícios
+        function preencherLogin(form) {
+            const inputs = form.querySelectorAll('input');
+            if(form.id === 'login-secretario') {
+                inputs[0].value = 'secretario';
+                inputs[1].value = '123456';
+            } else if(form.id === 'login-administrador') {
+                inputs[0].value = 'admin';
+                inputs[1].value = '123456';
+            }
+        }
+
+        // Alternar formulários ao clicar nos botões
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                buttons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const userType = btn.getAttribute('data-user');
+                forms.forEach(f => f.classList.remove('active', 'fade-in'));
+
+                const form = document.getElementById(`login-${userType}`);
+                form.classList.add('active');
+                setTimeout(() => form.classList.add('fade-in'), 10);
+
+                preencherLogin(form);
+            });
+        });
+
+        // Redirecionamento ao clicar em Entrar com validação
+        entrarBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const form = btn.closest('form');
+                const inputs = form.querySelectorAll('input');
+                const usuario = inputs[0].value.trim();
+                const senha = inputs[1].value.trim();
+
+                if(form.id === 'login-secretario') {
+                    if(usuario === 'secretario' && senha === '123456') {
+                        window.location.href = 'home-secretario.html';
+                    } else {
+                        alert('Usuário ou senha incorretos!');
+                    }
+                } else if(form.id === 'login-administrador') {
+                    if(usuario === 'admin' && senha === '123456') {
+                        window.location.href = 'home-admin.html';
+                    } else {
+                        alert('Usuário ou senha incorretos!');
+                    }
+                }
+            });
+        });
+
+        // Ao carregar a página, preencher automaticamente o Secretário
+        window.addEventListener('DOMContentLoaded', () => {
+            const formSecretario = document.getElementById('login-secretario');
+            preencherLogin(formSecretario);
+        });
+    </script>
+</body>
+</html>

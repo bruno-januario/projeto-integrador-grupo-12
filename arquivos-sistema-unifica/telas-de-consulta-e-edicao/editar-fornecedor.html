@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Fornecedor</title>
+  <link rel="stylesheet" href="../css/style-editar.css">
+  <link rel="icon" href="../img/icone-cabecalho.png" type="image/png">
+</head>
+<body>
+  <div class="container">
+
+    <header id="cabecalho">
+      <button id="btn-voltar" onclick="window.history.back();">
+        <img src="../img/icone-voltar.png">VOLTAR
+      </button>
+      <h1 id="titulo-cabecalho">SISTEMA UNIFICA</h1>
+      <img id="icone-cabecalho" src="../img/icone-cabecalho.png" alt="Ícone">
+      <button id="btn-sair">
+        <span>SAIR</span>
+        <img src="../img/icone-sair.png" alt="Sair">
+      </button>
+    </header>
+
+    <h2 id="titulo-cadastro">EDITAR FORNECEDOR</h2>
+
+    <main>
+      <form id="form-editar-fornecedor" class="form-cadastro">
+        <label>Razão Social*:
+          <input type="text" name="razaoSocial" required>
+        </label>
+
+        <label>CNPJ*:
+          <input type="text" name="cnpj" required maxlength="18" placeholder="00.000.000/0000-00">
+        </label>
+
+        <label>Telefone:
+          <input type="tel" name="telefone" placeholder="(00) 0000-0000">
+        </label>
+
+        <label>E-mail:
+          <input type="email" name="email">
+        </label>
+
+        <label>Endereço:
+          <input type="text" name="endereco">
+        </label>
+
+        <div id="mensagem"></div>
+        <button type="submit">Salvar Alterações</button>
+      </form>
+    </main>
+
+    <footer id="rodape">
+      <p>© 2025 SISTEMA UNIFICA — Todos os direitos reservados.</p>
+    </footer>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const idFornecedor = urlParams.get('id');
+
+    const form = document.getElementById("form-editar-fornecedor");
+    const mensagem = document.getElementById("mensagem");
+
+    // Simulação de dados
+    const fornecedores = [
+      { id: "1", razaoSocial: "Alfa Suprimentos LTDA", cnpj: "12.345.678/0001-99", telefone: "(11) 3333-4444", email: "contato@alfa.com.br", endereco: "Rua das Flores, 123" },
+      { id: "2", razaoSocial: "Beta Alimentos S/A", cnpj: "98.765.432/0001-11", telefone: "(21) 9999-8888", email: "suporte@beta.com.br", endereco: "Av. Brasil, 456" }
+    ];
+
+    // Preencher formulário com dados do fornecedor
+    const fornecedor = fornecedores.find(f => f.id === idFornecedor);
+
+    if(fornecedor){
+      form.razaoSocial.value = fornecedor.razaoSocial;
+      form.cnpj.value = fornecedor.cnpj;
+      form.telefone.value = fornecedor.telefone;
+      form.email.value = fornecedor.email;
+      form.endereco.value = fornecedor.endereco;
+    }
+
+    // Validação e submissão
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const cnpj = form.cnpj.value.trim();
+      if(!/^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/.test(cnpj)){
+        mensagem.innerHTML = "<p style='color:red;'>CNPJ inválido.</p>";
+        return;
+      }
+
+      mensagem.innerHTML = "<p style='color:green;'>Fornecedor atualizado com sucesso!</p>";
+
+    });
+  </script>
+
+  <script>
+    const btnSair = document.getElementById('btn-sair');
+
+    btnSair.addEventListener('click', () => {
+        window.location.href = '../index.html';
+    });
+  </script>
+</body>
+</html>

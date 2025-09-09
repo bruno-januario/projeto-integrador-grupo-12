@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Administrador</title>
+  <link rel="stylesheet" href="../css/style-editar.css">
+  <link rel="icon" href="../img/icone-cabecalho.png" type="image/png">
+</head>
+<body>
+  <div class="container">
+
+    <header id="cabecalho">
+      <button id="btn-voltar" onclick="window.history.back();">
+        <img src="../img/icone-voltar.png">VOLTAR
+      </button>
+      <h1 id="titulo-cabecalho">SISTEMA UNIFICA</h1>
+      <img id="icone-cabecalho" src="../img/icone-cabecalho.png" alt="Ícone">
+      <button id="btn-sair">
+        <span>SAIR</span>
+        <img src="../img/icone-sair.png" alt="Sair">
+      </button>
+    </header>
+
+    <h2 id="titulo-cadastro">EDITAR ADMINISTRADOR</h2>
+
+    <main>
+      <form id="form-editar-administrador" class="form-cadastro">
+        <label>Nome completo*:
+          <input type="text" name="nomeCompleto" required>
+        </label>
+
+        <label>CPF*:
+          <input type="text" name="cpf" required maxlength="14" placeholder="000.000.000-00">
+        </label>
+
+        <label>Data de nascimento*:
+          <input type="date" name="dataNascimento" required>
+        </label>
+
+        <label>E-mail:
+          <input type="email" name="email">
+        </label>
+
+        <label>Telefone:
+          <input type="tel" name="telefone" placeholder="(00) 00000-0000">
+        </label>
+
+        <label>Endereço:
+          <input type="text" name="endereco">
+        </label>
+
+        <label>Login*:
+          <input type="text" name="login" required>
+        </label>
+
+        <label>Senha*:
+          <input type="password" name="senha" required>
+        </label>
+
+        <button type="submit">Salvar Alterações</button>
+      </form>
+
+      <div id="mensagem"></div>
+    </main>
+
+    <footer id="rodape">
+      <p>© 2025 SISTEMA UNIFICA — Todos os direitos reservados.</p>
+    </footer>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const idAdministrador = urlParams.get('id');
+
+    const form = document.getElementById("form-editar-administrador");
+    const mensagem = document.getElementById("mensagem");
+
+    // Simulação de dados
+    const administradores = [
+      { id: "1", nomeCompleto: "Ana Oliveira", cpf: "111.222.333-44", dataNascimento: "1980-03-10", email: "ana@email.com", telefone: "(11) 91234-5678", endereco: "Rua A, 123", login: "ana_admin", senha: "senha123" },
+      { id: "2", nomeCompleto: "Bruno Lima", cpf: "555.666.777-88", dataNascimento: "1975-07-22", email: "bruno@email.com", telefone: "(21) 99876-5432", endereco: "Av. B, 456", login: "bruno_admin", senha: "abc123" }
+    ];
+
+    // Preencher formulário
+    const admin = administradores.find(a => a.id === idAdministrador);
+    if(admin){
+      form.nomeCompleto.value = admin.nomeCompleto;
+      form.cpf.value = admin.cpf;
+      form.dataNascimento.value = admin.dataNascimento;
+      form.email.value = admin.email;
+      form.telefone.value = admin.telefone;
+      form.endereco.value = admin.endereco;
+      form.login.value = admin.login;
+      form.senha.value = admin.senha;
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const cpf = form.cpf.value.trim();
+      if(!/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/.test(cpf)){
+        mensagem.innerHTML = "<p style='color:red;'>CPF inválido.</p>";
+        return;
+      }
+
+      mensagem.innerHTML = "<p style='color:green;'>Administrador atualizado com sucesso!</p>";
+
+    });
+  </script>
+
+  <script>
+    const btnSair = document.getElementById('btn-sair');
+
+    btnSair.addEventListener('click', () => {
+        window.location.href = '../index.html';
+    });
+  </script>
+</body>
+</html>

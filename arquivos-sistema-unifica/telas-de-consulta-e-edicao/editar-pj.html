@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar CNPJ</title>
+  <link rel="stylesheet" href="../css/style-editar.css">
+  <link rel="icon" href="../img/icone-cabecalho.png" type="image/png">
+</head>
+<body>
+  <div class="container">
+
+    <header id="cabecalho">
+      <button id="btn-voltar" onclick="window.history.back();">
+        <img src="../img/icone-voltar.png">VOLTAR
+      </button>
+      <h1 id="titulo-cabecalho">SISTEMA UNIFICA</h1>
+      <img id="icone-cabecalho" src="../img/icone-cabecalho.png" alt="Ícone">
+      <button id="btn-sair">
+        <span>SAIR</span>
+        <img src="../img/icone-sair.png" alt="Sair">
+      </button>
+    </header>
+
+    <h2 id="titulo-cadastro">EDITAR PESSOA JURÍDICA</h2>
+
+    <main>
+      <form id="form-editar-pj" class="form-cadastro">
+        <label>Razão Social*:
+          <input type="text" name="razaoSocial" required>
+        </label>
+
+        <label>Nome Fantasia*:
+          <input type="text" name="nomeFantasia" required>
+        </label>
+
+        <label>CNPJ*:
+          <input type="text" name="cnpj" required maxlength="18" placeholder="00.000.000/0000-00">
+        </label>
+
+        <label>Área de Atuação:
+          <input type="text" name="areaAtuacao">
+        </label>
+
+        <label>E-mail:
+          <input type="email" name="email">
+        </label>
+
+        <label>Telefone:
+          <input type="tel" name="telefone" placeholder="(00) 0000-0000">
+        </label>
+
+        <label>Endereço:
+          <input type="text" name="endereco">
+        </label>
+
+        <div id="mensagem"></div>
+        <button type="submit">Salvar Alterações</button>
+      </form>
+    </main>
+
+    <footer id="rodape">
+      <p>© 2025 SISTEMA UNIFICA — Todos os direitos reservados.</p>
+    </footer>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const idPJ = urlParams.get('id');
+
+    const form = document.getElementById("form-editar-pj");
+    const mensagem = document.getElementById("mensagem");
+
+    // Simulação de dados
+    const pessoasJuridicas = [
+      { id: "1", razaoSocial: "Tech Solutions LTDA", nomeFantasia: "Tech Solutions", cnpj: "11.222.333/0001-44", areaAtuacao: "Tecnologia", email: "contato@tech.com.br", telefone: "(11) 2222-3333", endereco: "Rua das Inovações, 100" },
+      { id: "2", razaoSocial: "ConstruMais S/A", nomeFantasia: "ConstruMais", cnpj: "55.666.777/0001-88", areaAtuacao: "Construção Civil", email: "suporte@construmais.com", telefone: "(21) 9999-7777", endereco: "Av. Obras, 456" }
+    ];
+
+    // Preencher formulário com dados
+    const pj = pessoasJuridicas.find(p => p.id === idPJ);
+
+    if(pj){
+      form.razaoSocial.value = pj.razaoSocial;
+      form.nomeFantasia.value = pj.nomeFantasia;
+      form.cnpj.value = pj.cnpj;
+      form.areaAtuacao.value = pj.areaAtuacao;
+      form.email.value = pj.email;
+      form.telefone.value = pj.telefone;
+      form.endereco.value = pj.endereco;
+    }
+
+    // Validação e submissão
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const cnpj = form.cnpj.value.trim();
+      if(!/^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/.test(cnpj)){
+        mensagem.innerHTML = "<p style='color:red;'>CNPJ inválido.</p>";
+        return;
+      }
+
+      mensagem.innerHTML = "<p style='color:green;'>Pessoa Jurídica atualizada com sucesso!</p>";
+
+    });
+  </script>
+
+  <script>
+    const btnSair = document.getElementById('btn-sair');
+
+    btnSair.addEventListener('click', () => {
+        window.location.href = '../index.html';
+    });
+  </script>
+</body>
+</html>

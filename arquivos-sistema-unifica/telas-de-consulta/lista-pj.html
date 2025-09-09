@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de CNPJs</title>
+  <link rel="stylesheet" href="../css/style-lista-consulta.css">
+  <link rel="icon" href="../img/icone-cabecalho.png" type="image/png">
+</head>
+<body>
+  <div class="container">
+
+    <header id="cabecalho">
+      <button id="btn-voltar" onclick="window.history.back();">
+        <img src="../img/icone-voltar.png">VOLTAR
+      </button>
+      <h1 id="titulo-cabecalho">SISTEMA UNIFICA</h1>
+      <img id="icone-cabecalho" src="../img/icone-cabecalho.png" alt="Ícone">
+      <button id="btn-sair">
+        <span>SAIR</span>
+        <img src="../img/icone-sair.png" alt="Sair">
+      </button>
+    </header>
+
+    <h2 id="titulo-lista">PESSOAS JURÍDICAS CADASTRADAS</h2>
+
+    <main>
+      <div class="lista-registros">
+        <div class="registro">
+          <p><strong>CNPJ:</strong> 12.345.678/0001-01</p>
+          <p><strong>Razão Social:</strong> Empresa X Ltda</p>
+          <p><strong>Endereço:</strong> Rua A, 123</p>
+          <p><strong>Telefone:</strong> (11) 98765-4321</p>
+        </div>
+
+        <div class="registro">
+          <p><strong>CNPJ:</strong> 98.765.432/0001-01</p>
+          <p><strong>Razão Social:</strong> Comércio Y SA</p>
+          <p><strong>Endereço:</strong> Av. B, 456</p>
+          <p><strong>Telefone:</strong> (21) 91234-5678</p>
+        </div>
+      </div>
+    </main>
+
+    <footer id="rodape">
+      <p>© 2025 SISTEMA UNIFICA — Todos os direitos reservados.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    const btnSair = document.getElementById('btn-sair');
+
+    btnSair.addEventListener('click', () => {
+        window.location.href = '../index.html';
+    });
+  </script>
+</body>
+</html>
