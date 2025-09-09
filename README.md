@@ -28,7 +28,7 @@ O sistema foi modelado para atender diferentes **atores** e suas permissões:
 - **Administrador**: possui acesso completo, podendo **cadastrar, consultar, atualizar e deletar cadastros, incluindo outros usuários**.  
 - **Sistema (ator secundário)**: executa as operações solicitadas, valida dados e retorna mensagens de sucesso ou erro.  
 
-### Casos de uso contempladados:
+### Casos de uso contemplados:
 - Autenticar Usuário (login).  
 - Consultar Cadastro (visualizar).  
 - Cadastrar Pessoa Física.  
