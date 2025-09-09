@@ -11,7 +11,7 @@ O projeto foi desenvolvido em duas etapas principais:
 
 ---
 
-## 👨‍👩‍👧‍👦 Integrantes do Grupo  
+## 👨‍👩‍👧‍👦 Integrantes do Grupo 12
 - Alan Correa Barcelos  
 - Bruno de Oliveira Januário  
 - Fernanda Albuquerque Oliveira  
